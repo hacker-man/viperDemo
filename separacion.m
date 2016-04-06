@@ -42,6 +42,7 @@ yVa = etiquetas(split.valid);
 
 %Datos de test: 50% cam_a, 50% cam_b:
 xTe = imagenes(:,split.test);
+
 %deprecated:
 % e_cam_a = etiquetas(317:632);
 % e_cam_b = etiquetas(949:1264);

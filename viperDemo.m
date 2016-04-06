@@ -14,5 +14,11 @@ maxiter=120;
 fprintf('Training final model...\n')
 [L,Details] = lmnnCG([xTr xVa], [yTr yVa],Klmnn,'maxiter',maxiter,'outdim',outdim)
 save data_training;
-testerr=knncl(L,xTe,yTe,xTe,yTe,Kknn,'train',0)
+%Separacion de los datos de test en cam_a y cam_b:
+	xTe_cam_a = xTe(:,317:632);
+	yTe_cam_a = yTe(317:632);
+	xTe_cam_b = xTe(:,949:1264);
+	yTe_cam_b = yTe(949:1264))
+%--------------------------------------------------
+testerr=knncl(L,xTe_cam_a,yTe_cam_a,xTe_cam_b,yTe_cam_b,Kknn,'train',0)
 fprintf('\n\nTesting error: %2.2f%%\n',100.*testerr)
