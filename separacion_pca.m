@@ -1,7 +1,7 @@
 disp('load split data');
 load('split_data');
 disp('Reading images...');
-lector_imagenes_gray;
+%lector_imagenes_gray;
 disp('Reading labels...');
 lector_etiquetas;
 %% perform PCA and split data into train/val/test

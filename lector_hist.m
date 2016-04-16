@@ -5,7 +5,7 @@ cam_a = [];
 for i = 1:length(lee_archivos)
     archivo = lee_archivos(i).name; 
     matriz_img = imread(strcat(ruta,archivo));
-    matriz_img = im2double(matriz_img);  
+   % matriz_img = im2double(matriz_img);  
     hist_img = compute_histogram(matriz_img);
     cam_a = horzcat(cam_a,hist_img);
 end
@@ -16,7 +16,7 @@ cam_b = [];
 for i = 1:length(lee_archivos)
     archivo = lee_archivos(i).name; 
     matriz_img = imread(strcat(ruta,archivo));
-    matriz_img = im2double(matriz_img);  
+    %matriz_img = im2double(matriz_img);  
     hist_img = compute_histogram(matriz_img);
     cam_b = horzcat(cam_b,hist_img);
 end
