@@ -1,3 +1,5 @@
 #datos
 DATA/
 *.mat
+#datos en carpeta
+result_mat/
