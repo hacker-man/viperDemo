@@ -26,7 +26,7 @@ opt.mins =  [ 1,    1    min(size(xTr,1),2)  10]; % Minimum value for each of th
 opt.dims = length(opt.mins); % Number of parameters.
 opt.max_iters = 12; % How many parameter settings do you want to try?
 opt.grid_size = 20000;
-opt.maxK=15;
+opt.maxK=1;
 opt.maxLMNNiter=200;
 opt.averages=1;
 opt=extractpars(varargin,opt);
@@ -66,11 +66,14 @@ function valerr=optimizeLMNN(x,y,train,val,P)
 outdim=ceil(P(3));
 knn=round(P(2));
 K=round(P(1));
+
 maxiter=ceil(P(4));
+val_cam_a = [317:474];
+val_cam_b = [475:632];
 fprintf('\nTrying K(lmnn)=%i K(knn)=%i outdim=%i maxiter=%i ...\n',K,knn,outdim,maxiter);
 for i=1:size(train,1)
  [L,~] = lmnnCG(x(:,train(i,:)), y(train(i,:)),K,'maxiter',maxiter,'quiet',1,'outdim',outdim);
- valerr(i,:)=knncl(L,x(:,train(i,:)), y(train(i,:)),x(:,val(i,:)), y(val(i,:)),knn,'train',0);
+ valerr(i,:)=knncl(L,x(:,val_cam_a(i,:)), y(val_cam_a(i,:)),x(:,val_cam_b(i,:)), y(val_cam_b(i,:)),knn,'train',0);
 end;
 valerr=mean(valerr,1);
 fprintf('\nvalidation error=%2.4f\n',valerr);
