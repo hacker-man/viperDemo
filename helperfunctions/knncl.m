@@ -18,7 +18,6 @@ function [Eval,Details]=knncl(L,xTr,lTr,xTe,lTe,KK,varargin)
 % Little bugfix, couldn't handle single test vectors beforehand. 
 % Thanks to Karim T. Abou-Moustafa for pointing it out to me. 
 %
-
 pars.train=1;
 pars.test=1;
 pars.cosigndist=0;
@@ -66,8 +65,8 @@ for i=1:pars.blocksize:max(NTr,NTe)
   if(pars.train && i<=NTr)
    	BTr=min(pars.blocksize-1,NTr-i);  
 	% Dtr=distance(xTr,xTr(:,i:i+BTr));
-   Dtr = bsxfun(@plus,sx1.',bsxfun(@plus,sx1(i:i+BTr),-2*xTr.'*xTr(:,i:i+BTr)));
-	 
+    Dtr = bsxfun(@plus,sx1.',bsxfun(@plus,sx1(i:i+BTr),-2*xTr.'*xTr(:,i:i+BTr)));
+    Dtr
     [~,nn]=mink(Dtr,Kn+1);
    	nn=nn(2:Kn+1,:);
    	lTr2(:,i:i+BTr)=LSKnn2(lTr(nn),KK,MM);
@@ -114,6 +113,11 @@ if(pars.train && ~pars.test)
 end;
 if(~pars.train && pars.test)
  Eval=Eval(2,outputK);
+ fileID = fopen('errores.txt','a');
+ fprintf(fileID,'%f',Eval);
+ fprintf(fileID,'\n');
+ fclose(fileID);
+ save('matching.mat','lTe','lTe2');
 end;
 
 function yy=LSKnn2(Ni,KK,MM)

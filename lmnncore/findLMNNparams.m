@@ -4,7 +4,6 @@ function [Klmnn,knn,outdim,maxiter]=findLMNNparams(xTr,yTr,xVa,yVa,varargin)
 % Please see demo2.m for a use case. 
 %
 % copyright Kilian Weinberger 2015
-
 startup;
 
 %% create valiadation data set 
@@ -58,7 +57,8 @@ knn=round(bestP(2));
 outdim=ceil(bestP(3));
 maxiter=ceil(bestP(4));
 fprintf('\nBest parameters: K(LMNN)=%i K(knn)=%i  outdim=%i maxiter=%i!\n',Klmnn,knn,outdim,maxiter);
-
+load('errores.txt');
+errores=errores';
 
 function valerr=optimizeLMNN(x,y,train,val,P)
 %function valerr=optimizeLMNN(xTr,yTr,xVa,yVa,P)
@@ -71,9 +71,10 @@ maxiter=ceil(P(4));
 val_cam_a = [317:474];
 val_cam_b = [475:632];
 fprintf('\nTrying K(lmnn)=%i K(knn)=%i outdim=%i maxiter=%i ...\n',K,knn,outdim,maxiter);
+fileID = fopen('errores.txt', 'a');
 for i=1:size(train,1)
- [L,~] = lmnnCG(x(:,train(i,:)), y(train(i,:)),K,'maxiter',maxiter,'quiet',1,'outdim',outdim);
- valerr(i,:)=knncl(L,x(:,val_cam_a(i,:)), y(val_cam_a(i,:)),x(:,val_cam_b(i,:)), y(val_cam_b(i,:)),knn,'train',0);
+[L,~] = lmnnCG(x(:,train(i,:)), y(train(i,:)),K,'maxiter',maxiter,'quiet',1,'outdim',outdim);
+valerr(i,:)=knncl(L,x(:,val_cam_a(i,:)), y(val_cam_a(i,:)),x(:,val_cam_b(i,:)), y(val_cam_b(i,:)),knn,'train',0);
 end;
 valerr=mean(valerr,1);
 fprintf('\nvalidation error=%2.4f\n',valerr);
