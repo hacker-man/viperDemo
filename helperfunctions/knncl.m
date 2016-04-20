@@ -117,6 +117,8 @@ if(~pars.train && pars.test)
  fprintf(fileID,'%f',Eval);
  fprintf(fileID,'\n');
  fclose(fileID);
+ figure
+ matching;
  save('matching.mat','lTe','lTe2');
 end;
 
