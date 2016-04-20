@@ -22,3 +22,4 @@ for i = 1:length(lee_archivos)
 end
 
 imagenes = [cam_a cam_b];
+clear archivo hist_img i lee_archivos matriz_img ruta
