@@ -1,5 +1,5 @@
 function H =  compute_histogram(I)
-Nbins = 128;
+Nbins = 32;
 normalized = 2;
 H = rgbhist(I,Nbins,normalized);
 end
