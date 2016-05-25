@@ -3,19 +3,19 @@
 % separacion;
 %Busca los parametros:
 
-[Klmnn,Kknn,outdim,maxiter]=findLMNNparams(xTr,yTr,xVa,yVa)
+%[Klmnn,Kknn,outdim,maxiter]=findLMNNparams(xTr,yTr,xVa,yVa)
 %save parametros;
 % train full muodel
-%   Klmnn=1;
-%   Kknn=1;
- % outdim=5;
-%  maxiter=2;
+ Klmnn=1;
+ Kknn=1;
+outdim=252;
+ maxiter=177;
 % 
 % 
-% fprintf('Training final model...\n')
-%[L,Details] = lmnnCG([xTr xVa], [yTr yVa],Klmnn,'maxiter',maxiter,'outdim',outdim)
+ fprintf('Training final model...\n')
+ [L,Details] = lmnnCG([xTr xVa], [yTr yVa],Klmnn,'maxiter',maxiter,'outdim',outdim)
 % 
-%Separacion de los datos de test en cam_a y cam_b:
+Separacion de los datos de test en cam_a y cam_b:
 % 	xTe_cam_a = xTe(:,1:316);
 % 	yTe_cam_a = yTe(1:316);
 % 	xTe_cam_b = xTe(:,317:632);

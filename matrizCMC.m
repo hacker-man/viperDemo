@@ -8,10 +8,8 @@ for i = 1:nCols
     cont = cont+1;
     end
 end
-x
 [ord inds] = sort(x);
 inds = inds';
-inds
 for i = 1:nCols
     tmp = inds(i,1:length(inds));
     index = find(tmp == i);
