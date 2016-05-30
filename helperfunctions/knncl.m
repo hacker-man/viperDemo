@@ -66,7 +66,6 @@ for i=1:pars.blocksize:max(NTr,NTe)
    	BTr=min(pars.blocksize-1,NTr-i);  
 	% Dtr=distance(xTr,xTr(:,i:i+BTr));
     Dtr = bsxfun(@plus,sx1.',bsxfun(@plus,sx1(i:i+BTr),-2*xTr.'*xTr(:,i:i+BTr)));
-    Dtr
     [~,nn]=mink(Dtr,Kn+1);
    	nn=nn(2:Kn+1,:);
    	lTr2(:,i:i+BTr)=LSKnn2(lTr(nn),KK,MM);
