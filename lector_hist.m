@@ -1,6 +1,8 @@
 %cam a
-lee_archivos = dir('DATA/VIPeR/cam_a/*.bmp'); 
-ruta ='DATA/VIPeR/cam_a/';
+%lee_archivos = dir('DATA/VIPeR/cam_a/*.bmp'); 
+%ruta ='DATA/VIPeR/cam_a/';
+lee_archivos = dir('DATA/coches/cam_a/*.JPG'); 
+ruta ='DATA/coches/cam_a/';
 cam_a = [];
 for i = 1:length(lee_archivos)
     archivo = lee_archivos(i).name; 
@@ -10,8 +12,10 @@ for i = 1:length(lee_archivos)
     cam_a = horzcat(cam_a,hist_img);
 end
 %cam b
-lee_archivos = dir('DATA/VIPeR/cam_b/*.bmp'); 
-ruta ='DATA/VIPeR/cam_b/';
+%lee_archivos = dir('DATA/VIPeR/cam_b/*.bmp'); 
+%ruta ='DATA/VIPeR/cam_b/';
+lee_archivos = dir('DATA/coches/cam_b/*.JPG'); 
+ruta ='DATA/coches/cam_b/';
 cam_b = [];
 for i = 1:length(lee_archivos)
     archivo = lee_archivos(i).name; 

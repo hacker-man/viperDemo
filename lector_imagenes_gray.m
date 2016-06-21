@@ -1,7 +1,9 @@
 %Lee imagenes de la base de datos y las almacena en 
 %un vector que posteriormente sera desenrrollado.
-lee_archivos = dir('DATA/VIPeR/cam_a/*.bmp'); 
-ruta ='DATA/VIPeR/cam_a/';
+%lee_archivos = dir('DATA/VIPeR/cam_a/*.bmp'); 
+%ruta ='DATA/VIPeR/cam_a/';
+lee_archivos = dir('DATA/coches/cam_a/*.JPG'); 
+ruta ='DATA/coches/cam_a/';
 fila = 1;
 for i = 1:length(lee_archivos) 
     archivo = lee_archivos(i).name; 
@@ -24,8 +26,10 @@ clear fila img_unroll i ruta lee_archivos temp;
 clear archivo comp_unroll t matriz_img t j;
 %--------------------------------------------------------------------------
 %Lee las imagenes de la camara B:
-lee_archivos = dir('DATA/VIPeR/cam_b/*.bmp'); 
-ruta ='DATA/VIPeR/cam_b/';
+%lee_archivos = dir('DATA/VIPeR/cam_b/*.bmp'); 
+%ruta ='DATA/VIPeR/cam_b/';
+lee_archivos = dir('DATA/coches/cam_b/*.JPG'); 
+ruta ='DATA/coches/cam_b/';
 fila = 1;
 for i = 1:length(lee_archivos) 
     archivo = lee_archivos(i).name; 

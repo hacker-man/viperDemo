@@ -68,8 +68,10 @@ knn=round(P(2));
 K=round(P(1));
 
 maxiter=ceil(P(4));
-val_cam_a = [317:474];
-val_cam_b = [475:632];
+%val_cam_a = [317:474];
+%val_cam_b = [475:632];
+val_cam_a = [17:24];
+val_cam_b = [25:32];
 fprintf('\nTrying K(lmnn)=%i K(knn)=%i outdim=%i maxiter=%i ...\n',K,knn,outdim,maxiter);
 fileID = fopen('errores.txt', 'a');
 for i=1:size(train,1)
